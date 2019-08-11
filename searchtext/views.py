@@ -43,9 +43,13 @@ class getsearchdataview(APIView):
         return Response(l)
 
 def datainsert(request):
-    import csv
+    import csv,os
+    from django.conf import settings
     def load_csv_file():
-        with open("C:/Users/USER/Downloads/word_search.csv",'r') as file_obj:
+        path =os.path.join(settings.BASE_DIR,"word_search.csv")
+        print path
+        # print gtt
+        with open(path,'r') as file_obj:
             reader = csv.reader(file_obj)
             entries=[]
             for row in reader:
