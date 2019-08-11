@@ -41,3 +41,19 @@ class getsearchdataview(APIView):
             l.extend(data_cont)
 
         return Response(l)
+
+def datainsert(request):
+    import csv
+    def load_csv_file():
+        with open("C:/Users/USER/Downloads/word_search.csv",'r') as file_obj:
+            reader = csv.reader(file_obj)
+            entries=[]
+            print "insert"
+            for row in reader:
+                if row[0]=='Column 2' and row[1]=='Column 3':
+                    continue
+                entries.append(words(Column_2=row[0],Column_3=int(row[1])))
+            words.objects.bulk_create(entries)
+        return "insert suceess"
+    data = load_csv_file()
+    print data

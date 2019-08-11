@@ -6,5 +6,5 @@ from django.views.decorators.csrf import csrf_exempt
 urlpatterns = [
     url(r'^home/',views.index),
     url(r'^search/$', views.getsearchdataview.as_view(),name='wordtext'),
-
+    url(r'^datainsert/$',views.datainsert)
 ]
