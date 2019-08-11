@@ -1,18 +1,36 @@
-<html>
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SEARCH WORDS</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<style>
+    #chatinput{
+    margin-left: 222px;
+    margin: 100px;
+    padding: 23px;
+    padding-left: 114px;
+    border-block-end-color: blue;
+    left: auto;
+}
+</style>
+</head>
 <body>
 <form>
+<h1>Search words</h1>
 
-
-<input type='text' name='fname'  id='chatinput'>
-    <div id ="textarea"></div>
+<input type='text' name='fname'  id='chatinput' placeholder="SEARCH WORD">
 </form>
 <script>
 
 var inputBox = document.getElementById('chatinput');
 
 inputBox.onkeyup = function(){
-    var word =  inputBox.value;
-        $.ajax({
+    console.log( inputBox.value);
+    $.ajax({
                 url: '{% url "search:wordtext" %}',
                 data: {
                     'word': word
