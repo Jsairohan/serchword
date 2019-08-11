@@ -48,7 +48,6 @@ def datainsert(request):
         with open("C:/Users/USER/Downloads/word_search.csv",'r') as file_obj:
             reader = csv.reader(file_obj)
             entries=[]
-            print "insert"
             for row in reader:
                 if row[0]=='Column 2' and row[1]=='Column 3':
                     continue
@@ -56,4 +55,3 @@ def datainsert(request):
             words.objects.bulk_create(entries)
         return "insert suceess"
     data = load_csv_file()
-    print data
