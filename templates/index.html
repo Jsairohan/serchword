@@ -1,35 +1,18 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>SEARCH WORDS</title>
-        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-
-    <link href="{% static 'navbarcss/auto_search.css'%}" rel="stylesheet">
- <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
-         rel = "stylesheet">
-     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-</head>
+<html>
 <body>
-    <div>
-        <label for="text">search box</label>
-        <div class="auto-search">
-        <input class=" form-control" id="text"   class='textsea' name="word" required
-                                    placeholder="type word" />
-        </div>
-        </div>
-    <div id="textarea">
-    </div>
-<script>
-        $(function(){
+<form>
 
-            $(document).on("keyup",".auto-search .textsea",function() {
-            var word = $(this).val();
-            console.log(word)
-            $.ajax({
+
+<input type='text' name='fname'  id='chatinput'>
+    <div id ="textarea"></div>
+</form>
+<script>
+
+var inputBox = document.getElementById('chatinput');
+
+inputBox.onkeyup = function(){
+    var word =  inputBox.value;
+        $.ajax({
                 url: '{% url "search:wordtext" %}',
                 data: {
                     'word': word
@@ -46,9 +29,12 @@
                 }
 
             });
-        });
-});
 
-    </script>
+}
+
+
+</script>
+
+
 </body>
 </html>
